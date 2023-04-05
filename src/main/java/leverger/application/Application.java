@@ -1,8 +1,9 @@
-package fr.leverger.application;
+package leverger.application;
 
-import fr.leverger.scene.Menu;
-import fr.leverger.utils.GestionDeScene;
+import leverger.scene.Menu;
+import leverger.utils.GestionDeScene;
 import javafx.stage.Stage;
+import leverger.utils.GestionDeScene;
 
 public class Application extends javafx.application.Application {
     @Override

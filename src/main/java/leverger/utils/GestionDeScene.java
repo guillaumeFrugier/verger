@@ -1,6 +1,6 @@
-package fr.leverger.utils;
+package leverger.utils;
 
-import fr.leverger.scene.Menu;
+import leverger.scene.Menu;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;

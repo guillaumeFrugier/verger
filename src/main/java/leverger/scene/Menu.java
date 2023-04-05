@@ -1,6 +1,6 @@
-package fr.leverger.scene;
+package leverger.scene;
 
-import fr.leverger.utils.ImageMenu;
+import leverger.utils.ImageMenu;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;

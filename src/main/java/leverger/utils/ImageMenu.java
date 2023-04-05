@@ -1,4 +1,4 @@
-package fr.leverger.utils;
+package leverger.utils;
 
 import javafx.scene.image.Image;
 
