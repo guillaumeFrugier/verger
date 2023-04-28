@@ -1,18 +1,18 @@
 package leverger.scene;
 
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import leverger.modele.*;
+import leverger.modele.fruit.*;
+import leverger.utils.evenement.EvenementCerise;
 import leverger.utils.ImageJeux;
 import leverger.utils.VariablePlateau;
+import leverger.utils.evenement.EvenementPoire;
+import leverger.utils.evenement.EvenementPomme;
+import leverger.utils.evenement.EvenementPrune;
 
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Plateau {
@@ -38,6 +38,12 @@ public class Plateau {
     private Fruit prune;
     private Fruit cerise;
 
+    //evenement
+    private EvenementCerise evenementCerise;
+    private EvenementPomme evenementPomme;
+    private EvenementPrune evenementPrune;
+    private EvenementPoire evenementPoire;
+
     public Plateau() throws FileNotFoundException {
 
 
@@ -55,6 +61,11 @@ public class Plateau {
         this.prune = new Prune(imageJeux.getPrune());
         this.cerise = new Cerise(imageJeux.getCerise());
 
+
+        this.evenementCerise = new EvenementCerise((Cerise) this.cerise);
+        this.evenementPomme = new EvenementPomme((Pomme) this.pomme);
+        this.evenementPoire = new EvenementPoire((Poire) this.poire);
+        this.evenementPrune = new EvenementPrune((Prune) this.prune);
 
 
         this.scene = new Scene(this.fond, 1300,900);
@@ -86,118 +97,22 @@ public class Plateau {
 
 
     private void evenementPlateau(){
-        for (int i = 0; i < 10; i++) {
-            //poire
-            poire.getAffichageFruit().get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    poire.getAffichageFruit().get(variablePlateau.getPositionPoire()).setVisible(false);
-                    variablePlateau.ajoutEnPositionPoire();
+            //evenement
+            evenementCerise.cliqueCerise(variablePlateau);
+            evenementCerise.sourisSurCerise();
+            evenementCerise.sourisQuitteCerise();
 
-                }
-            });
+            evenementPomme.cliqueSurPomme(variablePlateau);
+            evenementPomme.sourisSurPomme();
+            evenementPomme.sourisQuittePomme();
 
+            evenementPrune.cliqueSurPrune(variablePlateau);
+            evenementPrune.sourisSurPrune();
+            evenementPrune.sourisQuittePrune();
 
-            poire.getAffichageFruit().get(i).setOnMouseEntered(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (int j = 0; j < 10; j++) {
-                        poire.getAffichageFruit().get(j).setFitWidth(70);
-                        poire.getAffichageFruit().get(j).setFitHeight(70);
-                    }
-                }
-            });
-            poire.getAffichageFruit().get(i).setOnMouseExited(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (int j = 0; j < 10; j++) {
-                        poire.getAffichageFruit().get(j).setFitWidth(64);
-                        poire.getAffichageFruit().get(j).setFitHeight(64);
-                    }
-                }
-            });
-            //pomme
-            pomme.getAffichageFruit().get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    pomme.getAffichageFruit().get(variablePlateau.getPositionPomme()).setVisible(false);
-                    variablePlateau.ajoutEnPositionPomme();
-                }
-            });
-            pomme.getAffichageFruit().get(i).setOnMouseEntered(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (int j = 0; j < 10; j++) {
-                        pomme.getAffichageFruit().get(j).setFitWidth(70);
-                        pomme.getAffichageFruit().get(j).setFitHeight(70);
-                    }
-                }
-            });
-            pomme.getAffichageFruit().get(i).setOnMouseExited(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (int j = 0; j < 10; j++) {
-                        pomme.getAffichageFruit().get(j).setFitWidth(64);
-                        pomme.getAffichageFruit().get(j).setFitHeight(64);
-                    }
-                }
-            });
-
-            //prune
-            prune.getAffichageFruit().get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    prune.getAffichageFruit().get(variablePlateau.getPositionPrune()).setVisible(false);
-                    variablePlateau.ajoutEnPositionPrune();
-                }
-            });
-            prune.getAffichageFruit().get(i).setOnMouseEntered(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (int j = 0; j < 10; j++) {
-                        prune.getAffichageFruit().get(j).setFitWidth(70);
-                        prune.getAffichageFruit().get(j).setFitHeight(70);
-                    }
-                }
-            });
-            prune.getAffichageFruit().get(i).setOnMouseExited(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (int j = 0; j < 10; j++) {
-                        prune.getAffichageFruit().get(j).setFitWidth(64);
-                        prune.getAffichageFruit().get(j).setFitHeight(64);
-                    }
-                }
-            });
-
-            //cerise
-            cerise.getAffichageFruit().get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    cerise.getAffichageFruit().get(variablePlateau.getPositionCerise()).setVisible(false);
-                    variablePlateau.ajoutEnPositionCerise();
-                }
-            });
-
-            cerise.getAffichageFruit().get(i).setOnMouseEntered(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (int j = 0; j < 10; j++) {
-                        cerise.getAffichageFruit().get(j).setFitWidth(70);
-                        cerise.getAffichageFruit().get(j).setFitHeight(70);
-                    }
-                }
-            });
-            cerise.getAffichageFruit().get(i).setOnMouseExited(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    for (int j = 0; j < 10; j++) {
-                        cerise.getAffichageFruit().get(j).setFitWidth(64);
-                        cerise.getAffichageFruit().get(j).setFitHeight(64);
-                    }
-                }
-            });
-        }
+            evenementPoire.cliqueSurPoire(variablePlateau);
+            evenementPoire.sourisSurPoire();
+            evenementPoire.sourisQuittePoire();
     }
     public Scene plateauInitialisation(){
         placageDesFruits();
