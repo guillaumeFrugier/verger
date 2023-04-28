@@ -1,9 +1,15 @@
 package leverger.scene;
 
+import javafx.event.EventHandler;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import leverger.utils.ImageMenu;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
+
+import javax.swing.text.Element;
 
 import java.io.FileNotFoundException;
 
@@ -12,8 +18,8 @@ public class Menu {
     private BorderPane fond;
     private VBox boutonOrganisation;
     private Scene scene;
-    private Button boutonDebut;
-    private Button boutonQuitter;
+    private ImageView boutonDebut;
+    private ImageView boutonQuitter;
     //gestion des images
     private ImageMenu imageMenu;
     //arriere plan du menu
@@ -29,14 +35,15 @@ public class Menu {
 
 
     public Menu() throws FileNotFoundException {
+        //gestion des images
+        this.imageMenu = new ImageMenu();
         //widget
         this.fond = new BorderPane();
         this.boutonOrganisation = new VBox();
-        this.scene = new Scene(this.fond,800,800);
-        this.boutonDebut = new Button("debut");
-        this.boutonQuitter = new Button("quitter");
-        //gestion des images
-        this.imageMenu = new ImageMenu();
+        this.scene = new Scene(this.fond,1300,900);
+        this.boutonDebut = new ImageView(imageMenu.getBoutonDebut());
+        boutonDebut.setFitWidth(250);
+        boutonDebut.setFitHeight(100);
 
         //arriere plan du menu
         this.fondImage = new BackgroundImage(imageMenu.getArrierePlanMenu(), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
@@ -48,14 +55,39 @@ public class Menu {
     }
 
     public Scene initialisation(){
-        this.boutonDebut.setBackground(this.arrierPlanBoutonDebut);
-        this.boutonDebut.setMinHeight(100);
-        this.boutonDebut.setMinWidth(500);
-        this.boutonQuitter.setMinWidth(500);
-        this.boutonQuitter.setMinHeight(100);
+
+
         this.fond.setBackground(this.arrierePlan);
         this.fond.setCenter(this.boutonDebut);
-        //this.boutonOrganisation.getChildren().addAll(this.boutonDebut,this.boutonQuitter);
+
         return scene;
     };
+
+
+
+
+    public void sceneSuivante(Stage stage, Plateau plateau){
+        this.boutonDebut.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setScene(plateau.plateauInitialisation());
+            }
+        });
+        this.boutonDebut.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                boutonDebut.setFitWidth(260);
+                boutonDebut.setFitHeight(110);
+            }
+        });
+        this.boutonDebut.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                boutonDebut.setFitWidth(250);
+                boutonDebut.setFitHeight(100);
+            }
+        });
+
+
+    }
 }

@@ -12,7 +12,7 @@ public class ImageMenu {
 
     public ImageMenu()throws FileNotFoundException {
         this.arrierePlanMenu = new Image(new FileInputStream("src/image/menuLeverger.png"));
-        this.boutonDebut = new Image(new FileInputStream("src/image/diamant.jpg"));
+        this.boutonDebut = new Image(new FileInputStream("src/image/btn_debut.png"));
     }
 
     public Image getArrierePlanMenu() {
