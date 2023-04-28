@@ -21,7 +21,6 @@ public class Menu {
     private Background arrierePlan;
     //arriere plan bouton
     private BackgroundImage fondBoutonDebut;
-
     private Background arrierPlanBoutonDebut;
 
 
