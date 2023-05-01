@@ -1,19 +1,29 @@
 package leverger.scene;
 
+import java.io.FileNotFoundException;
+import java.util.List;
+
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import leverger.modele.fruit.*;
-import leverger.utils.evenement.EvenementCerise;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import leverger.modele.fruit.Cerise;
+import leverger.modele.fruit.Fruit;
+import leverger.modele.fruit.Poire;
+import leverger.modele.fruit.Pomme;
+import leverger.modele.fruit.Prune;
 import leverger.utils.ImageJeux;
 import leverger.utils.VariablePlateau;
+import leverger.utils.evenement.EvenementCerise;
 import leverger.utils.evenement.EvenementPoire;
 import leverger.utils.evenement.EvenementPomme;
 import leverger.utils.evenement.EvenementPrune;
-
-
-import java.io.FileNotFoundException;
-import java.util.List;
 
 public class Plateau {
 
@@ -28,9 +38,9 @@ public class Plateau {
 
     private VariablePlateau variablePlateau;
     private List<ImageView> panier;
-
-    private ImageView des;
-
+    
+    //le Dé
+    private De de;
 
     //les fruits
     private Fruit pomme;
@@ -43,6 +53,7 @@ public class Plateau {
     private EvenementPomme evenementPomme;
     private EvenementPrune evenementPrune;
     private EvenementPoire evenementPoire;
+
 
     public Plateau() throws FileNotFoundException {
 
@@ -60,7 +71,10 @@ public class Plateau {
         this.poire = new Poire(imageJeux.getPoire());
         this.prune = new Prune(imageJeux.getPrune());
         this.cerise = new Cerise(imageJeux.getCerise());
-
+        
+        this.de = new De(50);
+        this.de.setX(550);
+        this.de.setY(50);
 
         this.evenementCerise = new EvenementCerise((Cerise) this.cerise);
         this.evenementPomme = new EvenementPomme((Pomme) this.pomme);
@@ -113,6 +127,11 @@ public class Plateau {
             evenementPoire.cliqueSurPoire(variablePlateau);
             evenementPoire.sourisSurPoire();
             evenementPoire.sourisQuittePoire();
+            de.setOnMouseClicked(event ->{
+            	de.lancer();
+            });
+            
+            
     }
     public Scene plateauInitialisation(){
         placageDesFruits();
@@ -123,7 +142,7 @@ public class Plateau {
             this.fond.getChildren().add(prune.getAffichageFruit().get(i));
             this.fond.getChildren().add(cerise.getAffichageFruit().get(i));
         }
-
+        this.fond.getChildren().add(de);
         this.fond.setBackground(this.arrierePlan);
         return scene;
     }

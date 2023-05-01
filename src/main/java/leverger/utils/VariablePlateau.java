@@ -1,5 +1,7 @@
 package leverger.utils;
 
+import javafx.scene.paint.Color;
+
 public class VariablePlateau {
 
     //poire
@@ -161,8 +163,8 @@ public class VariablePlateau {
         return coordonneYCerise;
     }
     public void ajoutEnPositionCerise(){
-        if (this.ajoutCerise < 10){
-            this.ajoutCerise = this.ajoutCerise + 1;
+        if (this.positionCerise < 10){
+            this.positionCerise = this.positionCerise + 1;
         }
     }
 
@@ -170,3 +172,5 @@ public class VariablePlateau {
         return positionCerise;
     }
 }
+
+
