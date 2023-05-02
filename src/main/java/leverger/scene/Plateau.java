@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -11,8 +12,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import leverger.modele.fruit.Cerise;
 import leverger.modele.fruit.Fruit;
 import leverger.modele.fruit.Poire;
@@ -41,7 +41,10 @@ public class Plateau {
     
     //le Dé
     private De de;
-
+    
+    //tour
+    private int tour;
+    private Label nombreTour;
     //les fruits
     private Fruit pomme;
     private Fruit poire;
@@ -75,7 +78,11 @@ public class Plateau {
         this.de = new De(50);
         this.de.setX(550);
         this.de.setY(50);
-
+        
+        this.nombreTour = new Label("+" + tour);
+        this.nombreTour.setFont(new Font("Arial", 30));
+        //TODO continuer le nombre de tour
+        
         this.evenementCerise = new EvenementCerise((Cerise) this.cerise);
         this.evenementPomme = new EvenementPomme((Pomme) this.pomme);
         this.evenementPoire = new EvenementPoire((Poire) this.poire);
@@ -128,6 +135,7 @@ public class Plateau {
             evenementPoire.sourisSurPoire();
             evenementPoire.sourisQuittePoire();
             de.setOnMouseClicked(event ->{
+            	tour++;
             	de.lancer();
             });
             
@@ -142,7 +150,7 @@ public class Plateau {
             this.fond.getChildren().add(prune.getAffichageFruit().get(i));
             this.fond.getChildren().add(cerise.getAffichageFruit().get(i));
         }
-        this.fond.getChildren().add(de);
+        this.fond.getChildren().addAll(de,tour);
         this.fond.setBackground(this.arrierePlan);
         return scene;
     }
