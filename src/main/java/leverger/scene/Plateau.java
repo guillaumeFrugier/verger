@@ -43,9 +43,9 @@ public class Plateau {
     //le Dé
     private De de;
     
-    //tour
+    /*//tour
     private int tour;
-    private Label nombreTour;
+    private Label nombreTour;*/
     
     //les fruits
     private Fruit pomme;
@@ -81,12 +81,12 @@ public class Plateau {
         this.de.setX(550);
         this.de.setY(50);
         
-        this.tour = 1;
+       /* this.tour = 1;
         this.nombreTour = new Label(" " + tour);
         this.nombreTour.setFont(new Font("Arial", 30));
         this.nombreTour.setTextFill(Color.WHITE);
         this.nombreTour.setLayoutX(220);
-        this.nombreTour.setLayoutY(75);
+        this.nombreTour.setLayoutY(75);*/
         
         this.evenementCerise = new EvenementCerise((Cerise) this.cerise);
         this.evenementPomme = new EvenementPomme((Pomme) this.pomme);
@@ -140,7 +140,7 @@ public class Plateau {
             evenementPoire.sourisSurPoire();
             evenementPoire.sourisQuittePoire();
             de.setOnMouseClicked(event ->{
-            	tour = tour + 1;
+            	/*tour = tour + 1;*/
             	de.lancer();
             });
            /* if (de.couleurs[] == Color.VIOLET) {
@@ -157,7 +157,7 @@ public class Plateau {
             this.fond.getChildren().add(prune.getAffichageFruit().get(i));
             this.fond.getChildren().add(cerise.getAffichageFruit().get(i));
         }
-        this.fond.getChildren().addAll(de,nombreTour);
+        this.fond.getChildren().addAll(de/*,nombreTour*/);
         this.fond.setBackground(this.arrierePlan);
         return scene;
     }
