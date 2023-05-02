@@ -2,6 +2,8 @@ package leverger.utils;
 
 public class VariablePlateau {
 
+    //fruit
+    private int nombreFruit;
     //poire
     private float coordonneXPoire;
     private float coordonneYPoire;
@@ -24,6 +26,9 @@ public class VariablePlateau {
     private int positionCerise;
 
     public  VariablePlateau(){
+        //fruit
+        this.nombreFruit = 40;
+
         //poire
         this.ajoutPoire = 0;
         this.coordonneXPoire = 110;
@@ -161,12 +166,21 @@ public class VariablePlateau {
         return coordonneYCerise;
     }
     public void ajoutEnPositionCerise(){
-        if (this.ajoutCerise < 10){
-            this.ajoutCerise = this.ajoutCerise + 1;
+        if (this.positionCerise < 10){
+            this.positionCerise = this.positionCerise + 1;
         }
     }
 
     public int getPositionCerise() {
         return positionCerise;
+    }
+
+    //fruit
+    public void retraitFruit(){
+        this.nombreFruit = this.nombreFruit - 1;
+    }
+
+    public int getNombreFruit() {
+        return nombreFruit;
     }
 }

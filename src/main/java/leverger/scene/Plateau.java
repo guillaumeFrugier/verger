@@ -1,15 +1,13 @@
 package leverger.scene;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import leverger.modele.fruit.*;
-import leverger.utils.evenement.EvenementCerise;
+import leverger.utils.evenement.*;
 import leverger.utils.ImageJeux;
 import leverger.utils.VariablePlateau;
-import leverger.utils.evenement.EvenementPoire;
-import leverger.utils.evenement.EvenementPomme;
-import leverger.utils.evenement.EvenementPrune;
 
 
 import java.io.FileNotFoundException;
@@ -19,17 +17,17 @@ public class Plateau {
 
     private BackgroundImage arrierPlanImage;
     private Background arrierePlan;
+    //widget
     private Pane fond;
-
+    private List<ImageView> panier;
+    private Label victoire;
     private Scene scene;
 
+
+    //gestion image
     private ImageJeux imageJeux;
-
-
     private VariablePlateau variablePlateau;
-    private List<ImageView> panier;
 
-    private ImageView des;
 
 
     //les fruits
@@ -43,19 +41,22 @@ public class Plateau {
     private EvenementPomme evenementPomme;
     private EvenementPrune evenementPrune;
     private EvenementPoire evenementPoire;
+    private FinDePartie finDePartie;
 
     public Plateau() throws FileNotFoundException {
 
 
         this.fond = new Pane();
-
+        this.scene = new Scene(this.fond, 1300,900);
+        this.victoire = new Label("vous avez gagné !");
+        //image
         this.imageJeux = new ImageJeux();
-
+        //variable
         this.variablePlateau = new VariablePlateau();
-
+        //arriere plan
         this.arrierPlanImage = new BackgroundImage(imageJeux.getArrierePlan(), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
         this.arrierePlan = new Background(this.arrierPlanImage);
-
+        //fruit
         this.pomme = new Pomme(imageJeux.getPomme());
         this.poire = new Poire(imageJeux.getPoire());
         this.prune = new Prune(imageJeux.getPrune());
@@ -66,9 +67,10 @@ public class Plateau {
         this.evenementPomme = new EvenementPomme((Pomme) this.pomme);
         this.evenementPoire = new EvenementPoire((Poire) this.poire);
         this.evenementPrune = new EvenementPrune((Prune) this.prune);
+        this.finDePartie = new FinDePartie(variablePlateau);
 
 
-        this.scene = new Scene(this.fond, 1300,900);
+
     }
 
 
@@ -113,8 +115,15 @@ public class Plateau {
             evenementPoire.cliqueSurPoire(variablePlateau);
             evenementPoire.sourisSurPoire();
             evenementPoire.sourisQuittePoire();
+
+            finDePartie.initialisation(fond,victoire,pomme,poire,prune,cerise);
     }
     public Scene plateauInitialisation(){
+        this.victoire.setLayoutX(650);
+        this.victoire.setLayoutY(450);
+        this.victoire.setScaleX(10);
+        this.victoire.setScaleY(10);
+        this.victoire.setVisible(false);
         placageDesFruits();
         evenementPlateau();
         for (int i = 0; i < 10; i++) {
@@ -123,6 +132,7 @@ public class Plateau {
             this.fond.getChildren().add(prune.getAffichageFruit().get(i));
             this.fond.getChildren().add(cerise.getAffichageFruit().get(i));
         }
+        this.fond.getChildren().add(this.victoire);
 
         this.fond.setBackground(this.arrierePlan);
         return scene;

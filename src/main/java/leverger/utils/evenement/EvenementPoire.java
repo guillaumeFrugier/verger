@@ -19,6 +19,7 @@ public class EvenementPoire {
                 public void handle(MouseEvent event) {
                     poire.getAffichageFruit().get(variablePlateau.getPositionPoire()).setVisible(false);
                     variablePlateau.ajoutEnPositionPoire();
+                    variablePlateau.retraitFruit();
 
                 }
             });

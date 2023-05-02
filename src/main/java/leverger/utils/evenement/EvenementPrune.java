@@ -19,6 +19,7 @@ public class EvenementPrune {
                 public void handle(MouseEvent event) {
                     prune.getAffichageFruit().get(variablePlateau.getPositionPrune()).setVisible(false);
                     variablePlateau.ajoutEnPositionPrune();
+                    variablePlateau.retraitFruit();
                 }
             });
         }

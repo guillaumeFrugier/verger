@@ -1,17 +1,23 @@
 package test;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
+import leverger.modele.Panier;
+import leverger.modele.fruit.Fruit;
+import leverger.modele.fruit.Prune;
+import leverger.utils.ImageJeux;
+import org.testng.Assert;
 
-public class Test extends Application {
+import java.io.FileNotFoundException;
+
+public class Test {
 
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-
-    }
-
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws FileNotFoundException {
+        ImageJeux imageJeux = new ImageJeux();
+        //arrange
+        Panier panier =  new Panier();
+        //act
+        panier.ajoutFruit(new Prune(imageJeux.getPoire()));
+        //assert
+        Assert.assertEquals(0,1);
     }
 }

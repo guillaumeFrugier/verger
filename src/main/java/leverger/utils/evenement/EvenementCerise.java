@@ -21,6 +21,7 @@ public class EvenementCerise {
                 public void handle(MouseEvent event) {
                     cerise.getAffichageFruit().get(variablePlateau.getPositionCerise()).setVisible(false);
                     variablePlateau.ajoutEnPositionCerise();
+                    variablePlateau.retraitFruit();
                 }
             });
 
