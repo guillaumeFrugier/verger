@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
 
 public class De extends Rectangle{
 
-	private Color[] couleurs;
+	public Color[] couleurs;
 	
 	public De(double taille) {
 		super(taille, taille);
