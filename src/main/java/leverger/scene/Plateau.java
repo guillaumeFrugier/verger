@@ -38,7 +38,7 @@ public class Plateau {
 
     private Label victoire;
 
-    private Label test;
+
     private Scene scene;
     private De de;
 
@@ -93,17 +93,12 @@ public class Plateau {
     private Label nombrePanierDeux;
     private Label nombrePanierTrois;
     private Label nombrePanierQuatre;
-    //image fruit panier
-    private  ImageView ceriseImage;
-    private ImageView poireImage;
-    private ImageView pommeImage;
-    private ImageView pruneImage;
+
 
     //bourse
     private ImageView bourse;
 
-    //booléennes pour les variables du plateau
-    private Boolean choixTemp;
+
     public Plateau() throws FileNotFoundException {
 
 
@@ -270,10 +265,7 @@ public class Plateau {
 
     private void evenementPlateau(){
             //evenement
-           evenementDe.clique(variablePlateau, nombreTour, (Cerise) cerise,
-                (Prune) prune,
-                (Pomme) pomme,
-                (Poire) poire,
+           evenementDe.clique(variablePlateau, nombreTour,
                 corbeau,nomDuJoueur);
 
             evenementDe.sourisSurDe();

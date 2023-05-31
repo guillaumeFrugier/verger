@@ -1,6 +1,6 @@
 package leverger.scene;
 
-import javafx.event.ActionEvent;
+
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -12,21 +12,17 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import leverger.utils.ImageMenu;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.*;
-import leverger.utils.VariablePlateau;
 
-import javax.swing.text.Element;
 
 import java.io.FileNotFoundException;
 
 public class Menu {
     //widget
     private BorderPane fond;
-    private VBox boutonOrganisation;
+
     private Scene scene;
     private ImageView boutonDebut;
-    private ImageView boutonQuitter;
     //multijoueur
     private TextField joueur1;
     private TextField joueur2;
@@ -35,18 +31,12 @@ public class Menu {
 
     private Label erreurJoueur;
 
-    //autres variables
-    private VariablePlateau variablePlateau;
-
     //gestion des images
     private ImageMenu imageMenu;
     //arriere plan du menu
     private BackgroundImage fondImage;
     private Background arrierePlan;
-    //arriere plan bouton
-    private BackgroundImage fondBoutonDebut;
 
-    private Background arrierPlanBoutonDebut;
 
 
 
@@ -57,7 +47,7 @@ public class Menu {
         this.imageMenu = new ImageMenu();
         //widget
         this.fond = new BorderPane();
-        this.boutonOrganisation = new VBox();
+
         this.scene = new Scene(this.fond,1300,900);
 
         this.containerTextfield = new VBox();
@@ -76,9 +66,8 @@ public class Menu {
         //arriere plan du menu
         this.fondImage = new BackgroundImage(imageMenu.getArrierePlanMenu(), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
         this.arrierePlan = new Background(this.fondImage);
-        //arriere plan bouton
-        this.fondBoutonDebut = new BackgroundImage(imageMenu.getBoutonDebut(), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
-        this.arrierPlanBoutonDebut = new Background(this.fondBoutonDebut);
+
+
 
 
 
@@ -104,7 +93,7 @@ public class Menu {
         this.fond.setBottom(this.containerTextfield);
 
         return scene;
-    };
+    }
 
 
 

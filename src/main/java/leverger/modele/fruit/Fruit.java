@@ -3,9 +3,9 @@ package leverger.modele.fruit;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import leverger.modele.Couleur;
-import leverger.utils.ImageJeux;
 
-import java.io.FileNotFoundException;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public abstract class Fruit {
 
     private List<ImageView> affichageFruit;
 
-    protected Fruit(Image imageFruit, Couleur couleur) throws FileNotFoundException {
+    protected Fruit(Image imageFruit, Couleur couleur) {
         this.imageFruit = imageFruit;
         this.couleur = couleur;
         this.nombre = 10;

@@ -1,15 +1,13 @@
 package leverger.utils.evenement.fruit;
 
 import javafx.event.EventHandler;
-import javafx.scene.control.Label;
+
 import javafx.scene.input.*;
 import leverger.modele.Couleur;
 import leverger.modele.De;
-import leverger.modele.Panier;
-import leverger.modele.fruit.Pomme;
-import leverger.utils.VariablePlateau;
 
-import java.util.List;
+import leverger.modele.fruit.Pomme;
+
 
 public class EvenementPomme {
     private Pomme pomme;
@@ -18,27 +16,6 @@ public class EvenementPomme {
         this.pomme = pomme;
     }
 
-    /*
-    public void cliqueSurPomme(VariablePlateau variablePlateau, Label nombrePommePanier){
-
-        for (int i = 0; i < 10; i++) {
-            pomme.getAffichageFruit().get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    System.out.println(variablePlateau.getNombreActions());
-                    if ( variablePlateau.getNombreActions() > 0) {
-                        pomme.getAffichageFruit().get(variablePlateau.getPositionPomme()).setVisible(false);
-                        variablePlateau.ajoutEnPositionPomme();
-                        variablePlateau.retraitFruit();
-                        variablePlateau.ajoutNombrePommepanier();
-                        nombrePommePanier.setText(variablePlateau.getNombrePommeEnPanier().toString());
-                        pomme.retirerUnFruit();
-                        variablePlateau.moinsUneAction();
-                    }
-                }
-            });
-        }
-    }*/
 
 
     public void attraperEtLacher(De de){

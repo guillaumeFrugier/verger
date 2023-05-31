@@ -25,6 +25,7 @@ public class EvenementPanierUn {
                 event.acceptTransferModes(TransferMode.ANY);
             }
         });
+
         panierUn.getImage().setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {

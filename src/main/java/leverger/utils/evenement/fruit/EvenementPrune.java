@@ -1,15 +1,12 @@
 package leverger.utils.evenement.fruit;
 
 import javafx.event.EventHandler;
-import javafx.scene.control.Label;
 import javafx.scene.input.*;
 import leverger.modele.Couleur;
 import leverger.modele.De;
-import leverger.modele.Panier;
-import leverger.modele.fruit.Prune;
-import leverger.utils.VariablePlateau;
 
-import java.util.List;
+import leverger.modele.fruit.Prune;
+
 
 public class EvenementPrune {
     private Prune prune;

@@ -19,10 +19,6 @@ public class EvenementDe {
         this.de = de;
     }
     public void clique(VariablePlateau variablePlateau, Label nombreTour,
-                       Cerise cerise,
-                       Prune prune,
-                       Pomme pomme,
-                       Poire poire,
                        Corbeau corbeau,
                        Label nomJoueur){
         this.de.setOnMouseClicked(new EventHandler<MouseEvent>() {
